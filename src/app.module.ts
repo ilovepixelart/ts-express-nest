@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { UserModule } from './schemas/user.module';
+import { UserModule } from './modules/user.module';
 
 // To enable cache for your mongoose models, you need to import the cache module and initialize it with mongoose.
 import mongoose from 'mongoose';

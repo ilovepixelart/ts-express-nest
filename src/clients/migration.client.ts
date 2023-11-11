@@ -1,7 +1,7 @@
 import Migrator from 'ts-migrate-mongoose';
 
-export const migrations = {
-  run: async () => {
+export class MigrationClient {
+  static async run() {
     const migrator = await Migrator.connect({
       uri: process.env.MONGO_URI ?? 'mongodb://localhost:27017/nest',
       autosync: true,
@@ -34,5 +34,5 @@ export const migrations = {
       });
 
     await migrator.close();
-  },
-};
+  }
+}

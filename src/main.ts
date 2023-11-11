@@ -1,9 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
-import { migrations } from './clients/migration.client';
+import { MigrationClient } from './clients/migration.client';
 
 async function bootstrap() {
+  // We want to run migrations before starting the app
+  await MigrationClient.run();
+
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
@@ -15,8 +18,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  // We want to run migrations before starting the app
-  await migrations.run();
   await app.listen(3000);
 }
 bootstrap();
