@@ -8,7 +8,7 @@
 * [ts-cache-mongoose](https://github.com/ilovepixelart/ts-cache-mongoose) - mongoose cache (in-memory, redis) ✅
 * [typescript 5](https://www.typescriptlang.org/)
 
-You can run mongo locally using docker:
+You can run it using docker:
 
 ```bash
 docker compose build
