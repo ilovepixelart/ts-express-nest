@@ -31,7 +31,7 @@
     "reflect-metadata": "0.1.13",
     "rxjs": "7.8.1",
     "ts-cache-mongoose": "1.4.3",
-    "ts-migrate-mongoose": "3.5.4"
+    "ts-migrate-mongoose": "3.5.5"
   },
   "devDependencies": {
     "@nestjs/cli": "10.2.1",
