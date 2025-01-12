@@ -1,7 +1,8 @@
-import { getModels } from '../src/clients/migration.models';
+import type { Connection } from 'mongoose';
+import { UserSchema } from 'src/schemas/user.schema';
 
-export async function up() {
-  const { UserModel } = await getModels();
+export async function up(connection: Connection) {
+  const UserModel = connection.model('User', UserSchema);
   console.log('Migration - up');
 
   // Write migration here
@@ -12,8 +13,8 @@ export async function up() {
   );
 }
 
-export async function down() {
-  const { UserModel } = await getModels();
+export async function down(connection: Connection) {
+  const UserModel = connection.model('User', UserSchema);
   console.log('Migration - down');
 
   // Write migration here

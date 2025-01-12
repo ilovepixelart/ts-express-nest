@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "streetsidesoftware.code-spell-checker",
+    "mikestead.dotenv",
+    "biomejs.biome",
+    "eamodio.gitlens",
+    "DavidAnson.vscode-markdownlint"
+  ]
+}
