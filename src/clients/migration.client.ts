@@ -1,4 +1,4 @@
-import Migrator from 'ts-migrate-mongoose';
+import { Migrator } from 'ts-migrate-mongoose';
 
 // biome-ignore lint/complexity/noStaticOnlyClass: <explanation>
 export class MigrationClient {
