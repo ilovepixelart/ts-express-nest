@@ -31,7 +31,7 @@
     "mongoose": "8.11.0",
     "reflect-metadata": "0.2.2",
     "rxjs": "7.8.2",
-    "ts-cache-mongoose": "1.7.1",
+    "ts-cache-mongoose": "1.7.2",
     "ts-migrate-mongoose": "4.0.5"
   },
   "devDependencies": {
