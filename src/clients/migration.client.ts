@@ -1,6 +1,6 @@
 import { Migrator } from 'ts-migrate-mongoose';
 
-// biome-ignore lint/complexity/noStaticOnlyClass: <explanation>
+// biome-ignore lint/complexity/noStaticOnlyClass: Migration client used as namespace for static methods
 export class MigrationClient {
   static async run() {
     const migrator = await Migrator.connect({

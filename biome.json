@@ -12,13 +12,7 @@
         "organizeImports": {
           "level": "on",
           "options": {
-            "groups": [
-              "vitest",
-              ":BLANK_LINE:",
-              ":NODE:",
-              { "type": false },
-              ":BLANK_LINE:"
-            ]
+            "groups": ["vitest", ":BLANK_LINE:", ":NODE:", ":BLANK_LINE:"]
           }
         }
       }
@@ -29,7 +23,11 @@
     "rules": {
       "recommended": true,
       "correctness": {
-        "noUnusedVariables": "off"
+        "noUnusedVariables": "off",
+        "noUnusedFunctionParameters": "off"
+      },
+      "style": {
+        "useImportType": "off"
       }
     }
   },
@@ -37,8 +35,11 @@
     "formatter": {
       "trailingCommas": "all",
       "quoteStyle": "single",
-      "semicolons": "asNeeded",
+      "semicolons": "always",
       "lineWidth": 320
+    },
+    "parser": {
+      "unsafeParameterDecoratorsEnabled": true
     },
     "globals": ["Atomics", "SharedArrayBuffer"]
   },
