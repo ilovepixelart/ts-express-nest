@@ -1,5 +1,5 @@
 import type { Connection } from 'mongoose';
-import { UserSchema } from 'src/schemas/user.schema';
+import { UserSchema } from '../src/schemas/user.schema';
 
 export async function up(connection: Connection) {
   const UserModel = connection.model('User', UserSchema);
