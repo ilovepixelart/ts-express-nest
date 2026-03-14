@@ -23,5 +23,8 @@
     "singleline",
     "sonarjs",
     "yalc"
-  ]
+  ],
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

@@ -1,8 +1,8 @@
-import eslint from '@eslint/js'
-import eslintPluginPrettier from 'eslint-plugin-prettier/recommended'
-import tseslint from 'typescript-eslint'
+import eslint from '@eslint/js';
+import eslintPluginPrettier from 'eslint-plugin-prettier/recommended';
+import tseslint from 'typescript-eslint';
 
-export default tseslint.config(
+export default [
   { ignores: ['eslint.config.mjs', 'dist', 'node_modules'] },
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
@@ -21,4 +21,4 @@ export default tseslint.config(
       'prettier/prettier': ['error', { endOfLine: 'auto' }],
     },
   },
-)
+];
