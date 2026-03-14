@@ -1,11 +1,19 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
+import { IsIn, IsNotEmpty, IsString } from 'class-validator';
 
 export class UserDto {
+  @ApiProperty({ description: 'User name', example: 'John Doe' })
   @IsNotEmpty()
   @IsString()
-  name: string;
+  name!: string;
 
+  @ApiProperty({
+    description: 'User role',
+    example: 'admin',
+    enum: ['admin', 'manager', 'user'],
+  })
   @IsNotEmpty()
   @IsString()
-  role: string;
+  @IsIn(['admin', 'manager', 'user'])
+  role!: string;
 }

@@ -13,15 +13,17 @@ export class UserService {
     return created.save();
   }
 
-  async update(id: string, updateUserDto: UserDto): Promise<User> {
-    return this.userModel.findByIdAndUpdate(id, updateUserDto, { new: true });
+  async update(id: string, updateUserDto: UserDto): Promise<User | null> {
+    return this.userModel.findByIdAndUpdate(id, updateUserDto, {
+      returnDocument: 'after',
+    });
   }
 
-  async delete(id: string): Promise<User> {
+  async delete(id: string): Promise<User | null> {
     return this.userModel.findByIdAndDelete(id);
   }
 
-  async findOne(id: string): Promise<User> {
+  async findOne(id: string): Promise<User | null> {
     return this.userModel.findById(id).cache('3 seconds').exec();
   }
 

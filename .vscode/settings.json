@@ -21,6 +21,7 @@
     "linebreak",
     "parens",
     "singleline",
-    "sonarjs"
+    "sonarjs",
+    "yalc"
   ]
 }

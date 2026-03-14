@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-// To enable cache for your mongoose models, you need to import the cache module and initialize it with mongoose.
+import { MigrationModule } from 'ts-migrate-mongoose/nest';
 import mongoose from 'mongoose';
 import cache from 'ts-cache-mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { UserModule } from './modules/user.module';
 
 cache.init(mongoose, {
   defaultTTL: '60 seconds',
@@ -12,7 +14,23 @@ cache.init(mongoose, {
 });
 
 @Module({
-  imports: [MongooseModule.forRoot(process.env.MONGO_URI ?? 'mongodb://localhost/nest')],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    MongooseModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => ({
+        uri: config.get<string>('MONGO_URI', 'mongodb://localhost:27017/nest'),
+      }),
+    }),
+    MigrationModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => ({
+        uri: config.get<string>('MONGO_URI', 'mongodb://localhost:27017/nest'),
+        autosync: true,
+      }),
+    }),
+    UserModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
