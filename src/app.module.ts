@@ -1,17 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { CacheModule } from 'ts-cache-mongoose/nest';
 import { MigrationModule } from 'ts-migrate-mongoose/nest';
-import mongoose from 'mongoose';
-import cache from 'ts-cache-mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './modules/user.module';
-
-cache.init(mongoose, {
-  defaultTTL: '60 seconds',
-  engine: 'memory',
-});
 
 @Module({
   imports: [
@@ -21,6 +15,10 @@ cache.init(mongoose, {
       useFactory: (config: ConfigService) => ({
         uri: config.get<string>('MONGO_URI', 'mongodb://localhost:27017/nest'),
       }),
+    }),
+    CacheModule.forRoot({
+      engine: 'memory',
+      defaultTTL: '60 seconds',
     }),
     MigrationModule.forRootAsync({
       inject: [ConfigService],

@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import type { HydratedDocument } from 'mongoose';
+import { patchHistoryPlugin } from 'ts-patch-mongoose';
 
 export type UserDocument = HydratedDocument<User>;
 
@@ -13,3 +14,10 @@ export class User {
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
+
+UserSchema.plugin(patchHistoryPlugin, {
+  eventCreated: 'user-created',
+  eventUpdated: 'user-updated',
+  eventDeleted: 'user-deleted',
+  omit: ['__v', 'createdAt', 'updatedAt'],
+});
